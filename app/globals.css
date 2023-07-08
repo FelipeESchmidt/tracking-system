@@ -1,7 +1,8 @@
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 20, 20, 20;
+  --background-rgb: 18, 18, 18;
+
+  --theme: dark;
 }
 
 * {
@@ -17,13 +18,13 @@ body {
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: var(--theme);
 }
 
 body {
+  min-height: 100vh;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, rgb(var(--background-end-rgb)))
-    rgb(var(--background-start-rgb));
+  background-color: var(--background-rgb);
 }
 
 a {
