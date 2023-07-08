@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useApi } from "@/hooks/useApi";
+import { useSearchParams } from "next/navigation";
 
 import { Input } from "../Input";
 
 export interface IHeaderInputProps {}
 export const HeaderInput = () => {
-  const router = useRouter();
+  const { fetchTrackingInfo } = useApi();
   const searchParams = useSearchParams();
   const initialCode = searchParams?.get("code");
 
@@ -27,7 +28,10 @@ export const HeaderInput = () => {
   };
 
   const onSubmit = () => {
-    console.log(code);
+    if (!code) return;
+    fetchTrackingInfo(code)
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error));
   };
 
   return (
