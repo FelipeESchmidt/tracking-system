@@ -7,11 +7,17 @@
   font-size: 16px;
   border: 0;
   border-radius: 4px;
-  width: 300px;
+  width: 350px;
+  transition: 0.25s;
 }
 
 .input_container input:focus {
-  border-color: #007bff;
+  box-shadow: 2px 2px 4px -2px #007bff, inset 0 0 2px #007bff;
+  outline: none;
+}
+
+.input_container input:hover {
+  box-shadow: 2px 2px 4px -2px #2ecc71, inset 0 0 2px #2ecc71;
   outline: none;
 }
 
