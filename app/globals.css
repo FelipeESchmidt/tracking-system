@@ -24,7 +24,8 @@ html {
 body {
   min-height: 100vh;
   color: rgb(var(--foreground-rgb));
-  background-color: var(--background-rgb);
+  background-color: rgb(var(--background-rgb));
+  transition: background-color 0.75s ease-in;
 }
 
 a {
