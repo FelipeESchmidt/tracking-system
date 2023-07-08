@@ -1,7 +1,7 @@
 import "material-icons/iconfont/material-icons.css";
 
 import { HeaderInput } from "../HeaderInput";
-import { Icon } from "../Icon";
+import { ThemeSwitch } from "../ThemeSwitch";
 
 import styles from "./header.module.css";
 
@@ -11,7 +11,7 @@ export const Header = () => {
       <div className={styles.header_items}>
         <h1>Tracking System</h1>
         <HeaderInput />
-        <Icon i="mode_night" />
+        <ThemeSwitch />
       </div>
     </header>
   );

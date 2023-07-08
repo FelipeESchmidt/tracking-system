@@ -1,0 +1,32 @@
+.container {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.container span {
+  transition: 0.5s;
+  user-select: none;
+  color: rgb(var(--switch-icon-color));
+}
+
+.container:hover span {
+  color: rgb(var(--switch-icon-color-hover));
+}
+
+.container:hover {
+  box-shadow: 0 0 4px 0 rgb(var(--switch-icon-color-hover));
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container:active {
+  transition: 0.1s;
+  box-shadow: 0 0 8px 0 rgb(var(--switch-icon-color-hover));
+}
+
+.container:active span {
+  color: rgb(var(--switch-icon-color-active));
+}
