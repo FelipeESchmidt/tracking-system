@@ -9,6 +9,7 @@
   border-radius: 4px;
   width: 350px;
   transition: 0.25s;
+  background-color: rgb(var(--background-input));
 }
 
 .input_container input:focus {
