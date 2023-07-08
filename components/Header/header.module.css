@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  width: 100%;
+  padding-block: 20px;
+  box-shadow: 0 0 8px 2px #40404040, inset 0 0 4px #52525252;
+  border-radius: 0 0 16px 16px;
+}
+
+.header_items {
+  display: flex;
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 4%;
+}
+
+.header_items h1 {
+  font-size: 28px;
+}
