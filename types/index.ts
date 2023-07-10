@@ -1,3 +1,6 @@
+import React from "react";
+import { GoogleMapProps } from "react-google-maps";
+
 export interface IEventProps {
   tipo: string;
   status: string;
@@ -24,3 +27,7 @@ export interface IPackageProps {
   categoria: string;
   evento: Event[];
 }
+
+export type GoogleMapWithChildrenType = React.ComponentType<
+  GoogleMapProps & { children?: React.ReactNode }
+>;
