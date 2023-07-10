@@ -31,3 +31,44 @@ export interface IPackageProps {
 export type GoogleMapWithChildrenType = React.ComponentType<
   GoogleMapProps & { children?: React.ReactNode }
 >;
+
+interface Coordinates {
+  lat: number;
+  lng: number;
+}
+
+interface NestedBounds {
+  northeast: {
+    northeast: Coordinates;
+    southwest: Coordinates;
+  };
+  southwest: {
+    northeast: Coordinates;
+    southwest: Coordinates;
+  };
+}
+
+interface Result {
+  address_components: {
+    long_name: string;
+    short_name: string;
+    types: string[];
+  }[];
+  formatted_address: string;
+  geometry: {
+    bounds: NestedBounds;
+    location: {
+      lat: number;
+      lng: number;
+    };
+    location_type: string;
+    viewport: NestedBounds;
+  };
+  place_id: string;
+  types: string[];
+}
+
+export interface GeocodeResponse {
+  results: Result[];
+  status: string;
+}
