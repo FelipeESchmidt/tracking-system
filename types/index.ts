@@ -25,7 +25,7 @@ export interface IPackageProps {
   sigla: string;
   nome: string;
   categoria: string;
-  evento: Event[];
+  evento: IEventProps[];
 }
 
 export type GoogleMapWithChildrenType = React.ComponentType<
