@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useApi } from "@/hooks/useApi";
+import { useGeocode } from "@/hooks/useGeocode";
 import { useSearchParams } from "next/navigation";
 
 import { Input } from "../Input";
@@ -9,6 +10,8 @@ import { Input } from "../Input";
 export interface IHeaderInputProps {}
 export const HeaderInput = () => {
   const { fetchTrackingInfo } = useApi();
+  const { findLatAndLngFromCity } = useGeocode();
+
   const searchParams = useSearchParams();
   const initialCode = searchParams?.get("code");
 
@@ -27,11 +30,20 @@ export const HeaderInput = () => {
     }
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (!code) return;
-    fetchTrackingInfo(code)
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error));
+    const trackingInfo = await fetchTrackingInfo(code).catch((error) =>
+      console.log(error)
+    );
+
+    if (!trackingInfo) return;
+    const coordinates = await Promise.all(
+      trackingInfo.evento.map(
+        async (ev) => await findLatAndLngFromCity(ev.cidade, ev.uf)
+      )
+    );
+
+    console.log({ coordinates });
   };
 
   return (
