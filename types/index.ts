@@ -1,6 +1,11 @@
 import React from "react";
 import { GoogleMapProps } from "react-google-maps";
 
+export interface IWithChildren {
+  children: React.ReactNode;
+}
+
+
 export interface IEventProps {
   tipo: string;
   status: string;
