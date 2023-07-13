@@ -32,16 +32,8 @@ export const HeaderInput = () => {
 
   const onSubmit = async () => {
     if (!code) return;
-    const trackingInfo = await fetchTrackingInfo(code).catch((error) =>
-      console.log(error)
-    );
+    const citiesTrackingInfo = await fetchTrackingInfo(code);
 
-    if (!trackingInfo) return;
-    const coordinates = await Promise.all(
-      trackingInfo.evento.map(
-        async (ev) => await findLatAndLngFromCity(ev.cidade, ev.uf)
-      )
-    );
 
     console.log({ coordinates });
   };
