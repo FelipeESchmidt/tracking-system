@@ -1,9 +1,11 @@
 "use client";
 
 import React from "react";
+import { useSearchParams } from "next/navigation";
+
 import { useApi } from "@/hooks/useApi";
 import { useGeocode } from "@/hooks/useGeocode";
-import { useSearchParams } from "next/navigation";
+import { ITrackingInfoCityWithCoordinatesProps } from "@/types";
 
 import { Input } from "../Input";
 
@@ -34,6 +36,17 @@ export const HeaderInput = () => {
     if (!code) return;
     const citiesTrackingInfo = await fetchTrackingInfo(code);
 
+    if (!citiesTrackingInfo) return;
+    const citiesTrackingInfoWithCoordinates: ITrackingInfoCityWithCoordinatesProps[] =
+      await Promise.all(
+        citiesTrackingInfo.map(async (cityTrackingInfo) => {
+          const coordinates = await findLatAndLngFromCity(
+            cityTrackingInfo.city,
+            cityTrackingInfo.state
+          );
+          return { ...cityTrackingInfo, coordinates };
+        })
+      );
 
     console.log({ coordinates });
   };
