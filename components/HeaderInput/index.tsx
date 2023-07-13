@@ -6,6 +6,8 @@ import { useSearchParams } from "next/navigation";
 import { useApi } from "@/hooks/useApi";
 import { useGeocode } from "@/hooks/useGeocode";
 import { ITrackingInfoCityWithCoordinatesProps } from "@/types";
+import { Actions } from "@/reducers/trackingInfoReducer/actions";
+import { useTrackingInfoDispatch } from "@/context/TrackingInfoContext";
 
 import { Input } from "../Input";
 
@@ -13,6 +15,7 @@ export interface IHeaderInputProps {}
 export const HeaderInput = () => {
   const { fetchTrackingInfo } = useApi();
   const { findLatAndLngFromCity } = useGeocode();
+  const { dispatch } = useTrackingInfoDispatch();
 
   const searchParams = useSearchParams();
   const initialCode = searchParams?.get("code");
@@ -48,7 +51,7 @@ export const HeaderInput = () => {
         })
       );
 
-    console.log({ coordinates });
+    dispatch({ type: Actions.SET, info: citiesTrackingInfoWithCoordinates });
   };
 
   return (
