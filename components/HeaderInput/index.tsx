@@ -1,14 +1,22 @@
 "use client";
 
 import React from "react";
-import { useApi } from "@/hooks/useApi";
 import { useSearchParams } from "next/navigation";
+
+import { useApi } from "@/hooks/useApi";
+import { useGeocode } from "@/hooks/useGeocode";
+import { ITrackingInfoCityWithCoordinatesProps } from "@/types";
+import { Actions } from "@/reducers/trackingInfoReducer/actions";
+import { useTrackingInfoDispatch } from "@/context/TrackingInfoContext";
 
 import { Input } from "../Input";
 
 export interface IHeaderInputProps {}
 export const HeaderInput = () => {
   const { fetchTrackingInfo } = useApi();
+  const { findLatAndLngFromCity } = useGeocode();
+  const { dispatch } = useTrackingInfoDispatch();
+
   const searchParams = useSearchParams();
   const initialCode = searchParams?.get("code");
 
@@ -27,11 +35,23 @@ export const HeaderInput = () => {
     }
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (!code) return;
-    fetchTrackingInfo(code)
-      .then((data) => console.log(data))
-      .catch((error) => console.log(error));
+    const citiesTrackingInfo = await fetchTrackingInfo(code);
+
+    if (!citiesTrackingInfo) return;
+    const citiesTrackingInfoWithCoordinates: ITrackingInfoCityWithCoordinatesProps[] =
+      await Promise.all(
+        citiesTrackingInfo.map(async (cityTrackingInfo) => {
+          const coordinates = await findLatAndLngFromCity(
+            cityTrackingInfo.city,
+            cityTrackingInfo.state
+          );
+          return { ...cityTrackingInfo, coordinates };
+        })
+      );
+
+    dispatch({ type: Actions.SET, info: citiesTrackingInfoWithCoordinates });
   };
 
   return (

@@ -10,7 +10,7 @@ api.interceptors.response.use(
     if (responseData.erro) {
       return Promise.reject(responseData.erro);
     }
-    return response.data;
+    return response;
   },
   (error: AxiosError) => {
     if (error.response) {

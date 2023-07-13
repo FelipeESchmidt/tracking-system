@@ -2,6 +2,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
+import { IWithChildren } from "@/types";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -9,7 +11,7 @@ export const metadata: Metadata = {
   description: "Innovative Tracking System using maps",
 };
 
-export const RootLayout = ({ children }: { children: React.ReactNode }) => {
+export const RootLayout = ({ children }: IWithChildren) => {
   return (
     <html lang="pt-br">
       <body className={inter.className}>{children}</body>
