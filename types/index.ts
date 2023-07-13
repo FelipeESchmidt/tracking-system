@@ -5,6 +5,24 @@ export interface IWithChildren {
   children: React.ReactNode;
 }
 
+export interface ICityProps {
+  city: string;
+  state: string;
+  country?: string;
+}
+
+export interface ITrackingInfoCityProps extends ICityProps {
+  hasGone: boolean;
+}
+
+export interface ITrackingInfoCityWithCoordinatesProps
+  extends ITrackingInfoCityProps {
+  coordinates: Coordinates;
+}
+
+export interface ITrackingInfoStateProps {
+  info: ITrackingInfoCityWithCoordinatesProps[];
+}
 
 export interface IEventProps {
   tipo: string;
