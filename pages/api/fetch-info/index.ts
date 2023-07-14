@@ -32,7 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.status(200).json(citiesWithCoords);
   } catch (error) {
-    res.status(400).json({ error });
+    res.status(400).json({ error: `${error}` });
   } finally {
     console.log = logFunction;
   }

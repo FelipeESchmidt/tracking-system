@@ -1,9 +1,14 @@
-import { ITrackingInfoCityProps, IPackageProps } from "@/types";
+import { ITrackingInfoCityProps, IPackageProps, IEventProps } from "@/types";
+import appendCityByAcronym from "./appendCityByAcronym";
 
 export const normalizeTrackingInfo = (
   data: IPackageProps
 ): ITrackingInfoCityProps[] => {
-  const filterEvents = data.evento.filter(({ cidade, uf }) => !!cidade && !!uf);
+  let events: IEventProps[] = [];
+  if ("tipo" in data.evento) events = [data.evento];
+  else events = [...data.evento];
+
+  const filterEvents = events.filter(({ cidade, uf }) => !!cidade && !!uf);
 
   const allCities = filterEvents.reduce<ITrackingInfoCityProps[]>(
     (acc, { cidade, uf, destino }) => {
@@ -26,6 +31,10 @@ export const normalizeTrackingInfo = (
     },
     []
   );
+
+  const cityToAppend = appendCityByAcronym(data.sigla, allCities.length);
+
+  if (cityToAppend) allCities.push(cityToAppend);
 
   const citiesSet = new Set();
   const filteredCities = allCities.filter(({ city, state }) => {
