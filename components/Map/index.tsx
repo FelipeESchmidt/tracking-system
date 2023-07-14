@@ -7,10 +7,18 @@ import {
   withGoogleMap,
   GoogleMap,
   Polyline,
+  Marker,
 } from "react-google-maps";
-import { GoogleMapWithChildrenType } from "@/types";
 import { mapsUrl } from "@/services/maps";
+import { GoogleMapWithChildrenType } from "@/types";
+import { useCitiesTracking } from "@/hooks/useCitiesTracking";
 import { useTrackingInfo } from "@/context/TrackingInfoContext";
+
+import {
+  defaultCenterCoordinates,
+  defaultPolylineProps,
+  defaultZoom,
+} from "./constants";
 
 const CGoogleMap = GoogleMap as GoogleMapWithChildrenType;
 
@@ -27,22 +35,37 @@ export const Map = compose(
   withGoogleMap
 )(() => {
   const { info } = useTrackingInfo();
+  const { createRoutes } = useCitiesTracking();
+
+  const { complete, incomplete } = createRoutes(info);
+
+  const hasIncomplete = incomplete.length;
+
+  const currentLocation = hasIncomplete
+    ? { ...incomplete.slice(-1)[0].coordinates }
+    : null;
 
   return (
     <CGoogleMap
-      defaultZoom={5}
-      defaultCenter={{ lat: -14.924578, lng: -52.441181 }}
+      defaultZoom={defaultZoom}
+      defaultCenter={currentLocation || defaultCenterCoordinates}
       options={{
         mapId,
       }}
     >
+      {!!currentLocation && <Marker position={currentLocation} />}
       <Polyline
-        path={info.map(({ coordinates }) => ({ ...coordinates }))}
+        path={complete.map(({ coordinates }) => ({ ...coordinates }))}
         options={{
+          ...defaultPolylineProps,
           strokeColor: "#0088FF",
-          strokeWeight: 6,
-          strokeOpacity: 0.6,
-          defaultVisible: true,
+        }}
+      />
+      <Polyline
+        path={incomplete.map(({ coordinates }) => ({ ...coordinates }))}
+        options={{
+          ...defaultPolylineProps,
+          strokeColor: "#ffbb00",
         }}
       />
     </CGoogleMap>
