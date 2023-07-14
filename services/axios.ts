@@ -1,7 +1,9 @@
+"use client";
+
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 const api = axios.create({
-  baseURL: `https://d13ovmltb9.execute-api.us-east-1.amazonaws.com`,
+  baseURL: window ? `${window.location.origin}/api` : "",
 });
 
 api.interceptors.response.use(
@@ -12,9 +14,10 @@ api.interceptors.response.use(
     }
     return response;
   },
-  (error: AxiosError) => {
+  (error: AxiosError<{ error: string }>) => {
     if (error.response) {
-      return Promise.reject("Erro na resposta:");
+      const errorMessage = error.response.data.error;
+      return Promise.reject(`Erro na resposta: ${errorMessage}`);
     }
     if (error.request) {
       return Promise.reject("Não foi possível obter resposta do servidor.");
