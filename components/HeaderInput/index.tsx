@@ -37,21 +37,9 @@ export const HeaderInput = () => {
 
   const onSubmit = async () => {
     if (!code) return;
-    const citiesTrackingInfo = await fetchTrackingInfo(code);
-
-    if (!citiesTrackingInfo) return;
-    const citiesTrackingInfoWithCoordinates: ITrackingInfoCityWithCoordinatesProps[] =
-      await Promise.all(
-        citiesTrackingInfo.map(async (cityTrackingInfo) => {
-          const coordinates = await findLatAndLngFromCity(
-            cityTrackingInfo.city,
-            cityTrackingInfo.state
-          );
-          return { ...cityTrackingInfo, coordinates };
-        })
-      );
-
-    dispatch({ type: Actions.SET, info: citiesTrackingInfoWithCoordinates });
+    fetchTrackingInfo(code)
+      .then((info) => dispatch({ type: Actions.SET, info }))
+      .catch((error) => console.log(error));
   };
 
   return (
