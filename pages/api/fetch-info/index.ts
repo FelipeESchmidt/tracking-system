@@ -19,18 +19,23 @@ const validateErrors = (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  const logFunction = console.log;
   console.log = function () {};
-  if (validateErrors(req, res)) {
-    return res.end();
+  try {
+    if (validateErrors(req, res)) {
+      return res.end();
+    }
+
+    const { code } = req.body;
+    const filteredCities = await fetchTrackingInfo(code);
+    const citiesWithCoords = await fetchCoordinatesFromCities(filteredCities);
+
+    res.status(200).json(citiesWithCoords);
+  } catch (error) {
+    res.status(400).json({ error });
+  } finally {
+    console.log = logFunction;
   }
-
-  const { code } = req.body;
-
-  const filteredCities = await fetchTrackingInfo(code);
-
-  const citiesWithCoords = await fetchCoordinatesFromCities(filteredCities);
-
-  res.status(200).json(citiesWithCoords);
 };
 
 export default handler;
