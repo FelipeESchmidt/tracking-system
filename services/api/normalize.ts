@@ -1,9 +1,13 @@
-import { ITrackingInfoCityProps, IPackageProps } from "@/types";
+import { ITrackingInfoCityProps, IPackageProps, IEventProps } from "@/types";
 
 export const normalizeTrackingInfo = (
   data: IPackageProps
 ): ITrackingInfoCityProps[] => {
-  const filterEvents = data.evento.filter(({ cidade, uf }) => !!cidade && !!uf);
+  let events: IEventProps[] = [];
+  if ("tipo" in data.evento) events = [data.evento];
+  else events = [...data.evento];
+
+  const filterEvents = events.filter(({ cidade, uf }) => !!cidade && !!uf);
 
   const allCities = filterEvents.reduce<ITrackingInfoCityProps[]>(
     (acc, { cidade, uf, destino }) => {
