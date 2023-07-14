@@ -1,4 +1,5 @@
 import { ITrackingInfoCityProps, IPackageProps, IEventProps } from "@/types";
+import appendCityByAcronym from "./appendCityByAcronym";
 
 export const normalizeTrackingInfo = (
   data: IPackageProps
@@ -30,6 +31,10 @@ export const normalizeTrackingInfo = (
     },
     []
   );
+
+  const cityToAppend = appendCityByAcronym(data.sigla, allCities.length);
+
+  if (cityToAppend) allCities.push(cityToAppend);
 
   const citiesSet = new Set();
   const filteredCities = allCities.filter(({ city, state }) => {
