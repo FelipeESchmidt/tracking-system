@@ -1,8 +1,12 @@
 "use client";
 
+import React from "react";
+
 import { theme } from "./constants";
 
 export const useTheme = () => {
+  const [dark, setDark] = React.useState(true);
+
   const handleChangeTheme = (dark: boolean) => {
     const root: HTMLElement | null = document?.querySelector(":root");
     if (!root) return;
@@ -13,5 +17,13 @@ export const useTheme = () => {
     );
   };
 
-  return { handleChangeTheme };
+  const handleChangeMode = () => {
+    setDark((prev) => !prev);
+  };
+
+  React.useEffect(() => {
+    handleChangeTheme(dark);
+  }, [dark]);
+
+  return { handleChangeTheme, handleChangeMode, isDark: dark };
 };

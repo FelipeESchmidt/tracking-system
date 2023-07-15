@@ -7,20 +7,11 @@ import { Icon } from "../Icon";
 import styles from "./theme_switch.module.css";
 
 export const ThemeSwitch = () => {
-  const { handleChangeTheme } = useTheme();
-  const [dark, setDark] = React.useState(true);
-
-  const handleChangeMode = () => {
-    setDark((prev) => !prev);
-  };
-
-  React.useEffect(() => {
-    handleChangeTheme(dark);
-  }, [dark, handleChangeTheme]);
+  const { handleChangeMode, isDark } = useTheme();
 
   return (
     <div onClick={handleChangeMode} className={styles.container}>
-      {dark ? <Icon i="mode_night" /> : <Icon i="lightbulb" />}
+      {isDark ? <Icon i="mode_night" /> : <Icon i="lightbulb" />}
     </div>
   );
 };
