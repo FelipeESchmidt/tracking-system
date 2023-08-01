@@ -3,17 +3,20 @@ import React from "react";
 import { removeNonAlphanumeric } from "@/utils";
 
 import styles from "./input.module.css";
+import { Icon } from "../Icon";
 
 export type IInputProps = {
   label?: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onButtonClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = ({
   label,
-  onChange,
   value,
+  onChange,
+  onButtonClick,
   ...inputProps
 }: IInputProps) => {
   React.useEffect(() => {
@@ -29,6 +32,9 @@ export const Input = ({
     <div className={styles.input_container}>
       <input type="text" value={value} onChange={onChange} {...inputProps} />
       {!!label && <label>{label}</label>}
+      <button className={styles.input_button} onClick={onButtonClick}>
+        <Icon i="add_circle" />
+      </button>
     </div>
   );
 };

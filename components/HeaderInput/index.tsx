@@ -32,6 +32,12 @@ export const HeaderInput = () => {
     }
   };
 
+  const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
+    onSubmit();
+  };
+
   const onSubmit = async () => {
     if (!code) return;
     fetchTrackingInfo(code)
@@ -44,6 +50,7 @@ export const HeaderInput = () => {
       <Input
         onKeyDown={onKeyDown}
         onChange={handleChange}
+        onButtonClick={handleButtonClick}
         value={code}
         placeholder="Digite seu código"
       />
