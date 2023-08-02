@@ -2,9 +2,7 @@
 
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-const api = axios.create({
-  baseURL: window ? `${window.location.origin}/api` : "",
-});
+const api = axios.create();
 
 api.interceptors.response.use(
   (response: AxiosResponse) => {

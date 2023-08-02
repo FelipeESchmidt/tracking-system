@@ -11,11 +11,10 @@ export const metadata: Metadata = {
   description: "Innovative Tracking System using maps",
 };
 
-export const RootLayout = ({ children }: IWithChildren) => {
+export default function RootLayout({ children }: IWithChildren) {
   return (
     <html lang="pt-br">
       <body className={inter.className}>{children}</body>
     </html>
   );
-};
-export default RootLayout;
+}
