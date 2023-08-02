@@ -6,7 +6,7 @@ import { TrackingInfoContextProvider } from "@/context/TrackingInfoContext";
 
 import styles from "./page.module.css";
 
-export const Home = () => {
+export default function Home() {
   return (
     <main className={styles.main}>
       <TrackingInfoContextProvider>
@@ -15,6 +15,4 @@ export const Home = () => {
       </TrackingInfoContextProvider>
     </main>
   );
-};
-
-export default Home;
+}
