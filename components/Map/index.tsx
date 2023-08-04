@@ -50,6 +50,7 @@ export const Map: IMapComposedProps = compose(
       defaultCenter={currentLocation || defaultCenterCoordinates}
       options={{
         mapId,
+        disableDefaultUI: true,
       }}
     >
       {!!currentLocation && <Marker position={currentLocation} />}
