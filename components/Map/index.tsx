@@ -22,7 +22,7 @@ import {
 
 const CGoogleMap = GoogleMap as GoogleMapWithChildrenType;
 
-export const Map: IMapComposedProps & any = compose(
+export const Map: IMapComposedProps = compose(
   withProps(({ mapId }: IMapComposedProps) => ({
     mapId,
     googleMapURL: mapsUrl,
@@ -32,7 +32,7 @@ export const Map: IMapComposedProps & any = compose(
   })),
   withScriptjs,
   withGoogleMap
-)(({ mapId }: IMapComposedProps & any) => {
+)(({ mapId }: IMapComposedProps) => {
   const { info } = useTrackingInfo();
   const { createRoutes } = useCitiesTracking();
 
