@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Header } from "@/components/Header";
+import { MapWrapper } from "@/components/MapWrapper";
 import { ThemeContextProvider } from "@/context/ThemeContext";
 import { TrackingInfoContextProvider } from "@/context/TrackingInfoContext";
 
@@ -12,7 +13,8 @@ export default function Home() {
     <main className={styles.main}>
       <TrackingInfoContextProvider>
         <ThemeContextProvider>
-        <Header />
+          <Header />
+          <MapWrapper />
         </ThemeContextProvider>
       </TrackingInfoContextProvider>
     </main>

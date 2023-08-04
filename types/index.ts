@@ -28,6 +28,11 @@ export interface IThemeStateProps {
   dark: boolean;
 }
 
+export interface IMapProps {
+  mapId: string;
+}
+
+export type IMapComposedProps = IMapProps & any;
 
 export interface IEventProps {
   tipo: string;
