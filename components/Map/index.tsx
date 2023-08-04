@@ -10,7 +10,7 @@ import {
   Marker,
 } from "react-google-maps";
 import { mapsUrl } from "@/services/maps";
-import { GoogleMapWithChildrenType } from "@/types";
+import { GoogleMapWithChildrenType, IMapComposedProps } from "@/types";
 import { useCitiesTracking } from "@/hooks/useCitiesTracking";
 import { useTrackingInfo } from "@/context/TrackingInfoContext";
 
@@ -22,18 +22,17 @@ import {
 
 const CGoogleMap = GoogleMap as GoogleMapWithChildrenType;
 
-const mapId = process.env.NEXT_PUBLIC_GOOGLE_MAP_ID;
-
-export const Map = compose(
-  withProps({
+export const Map: IMapComposedProps = compose(
+  withProps(({ mapId }: IMapComposedProps) => ({
+    mapId,
     googleMapURL: mapsUrl,
     loadingElement: <div style={{ height: `100%`, width: "100%" }} />,
     containerElement: <div style={{ height: `800px`, width: "100%" }} />,
     mapElement: <div style={{ height: `100%`, width: "100%" }} />,
-  }),
+  })),
   withScriptjs,
   withGoogleMap
-)(() => {
+)(({ mapId }: IMapComposedProps) => {
   const { info } = useTrackingInfo();
   const { createRoutes } = useCitiesTracking();
 
