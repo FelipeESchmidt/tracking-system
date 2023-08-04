@@ -24,6 +24,11 @@ export interface ITrackingInfoStateProps {
   info: ITrackingInfoCityWithCoordinatesProps[];
 }
 
+export interface IThemeStateProps {
+  dark: boolean;
+}
+
+
 export interface IEventProps {
   tipo: string;
   status: string;
