@@ -5,5 +5,5 @@ export interface IIconProps {
 }
 
 export const Icon = ({ i }: IIconProps) => {
-  return <span className="material-icons">{i}</span>;
+  return <i className="material-icons">{i}</i>;
 };
