@@ -9,7 +9,8 @@ type Cities = {
 export const cityByAcronym: Cities = {
   NL: (length: number) => ({
     city: "Pequim",
-    state: "China",
+    state: "República Popular da China",
+    country: "China",
     hasGone: length >= 1,
   }),
 };
