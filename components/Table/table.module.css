@@ -1,0 +1,80 @@
+.table {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin: 0 auto;
+}
+
+.table span {
+  text-transform: capitalize;
+}
+
+.table_item {
+  position: relative;
+  display: flex;
+  flex: 1;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 24px 32px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px 2px #40404040, inset 0 0 4px #52525252;
+}
+
+.index {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  padding: 4px;
+
+  font-size: 12px;
+
+  background-color: #52525252;
+  border-radius: 8px 0 8px 0;
+  text-align: center;
+}
+
+.cities {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+}
+
+.icon[data-hasGone="true"] {
+  border: 2px solid #0088ff;
+}
+
+.icon[data-hasGone="true"] > span {
+  color: #0088ff;
+}
+
+.icon[data-hasGone="false"] {
+  border: 2px solid #ffbb00;
+}
+
+.icon[data-hasGone="false"] > span {
+  color: #ffbb00;
+}
+
+.icon_complete[data-hasGone="true"] > i {
+  color: #0088ff;
+}
+
+.icon_complete[data-hasGone="false"] > i {
+  color: #ffbb00;
+}

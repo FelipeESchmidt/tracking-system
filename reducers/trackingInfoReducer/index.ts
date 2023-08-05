@@ -1,3 +1,5 @@
+"use client";
+
 import { ITrackingInfoStateProps } from "@/types";
 import { ActionType, Actions } from "./actions";
 
