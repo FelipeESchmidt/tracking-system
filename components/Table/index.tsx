@@ -61,14 +61,14 @@ export const Table = () => {
       {reversedInfo.map((item, index) => (
         <div key={item.city} className={styles.table_item}>
           <span className={styles.index}>#{index}</span>
-          <div className={styles.icon} data-hasGone={item.hasGone}>
+          <div className={styles.icon} data-hasgone={item.hasGone}>
             <Icon i={getShippingIcon(item, index)} />
           </div>
           <div className={styles.cities}>
             <span>De: {capitalize(item.city)}</span>
             <span>Para: {capitalize(getToText(reversedInfo[index + 1]))}</span>
           </div>
-          <div className={styles.icon_complete} data-hasGone={item.hasGone}>
+          <div className={styles.icon_complete} data-hasgone={item.hasGone}>
             <Icon i={getCompleteIcon(item)} />
           </div>
         </div>

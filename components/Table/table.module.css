@@ -55,26 +55,26 @@
   border-radius: 50%;
 }
 
-.icon[data-hasGone="true"] {
+.icon[data-hasgone="true"] {
   border: 2px solid #0088ff;
 }
 
-.icon[data-hasGone="true"] > span {
+.icon[data-hasgone="true"] > span {
   color: #0088ff;
 }
 
-.icon[data-hasGone="false"] {
+.icon[data-hasgone="false"] {
   border: 2px solid #ffbb00;
 }
 
-.icon[data-hasGone="false"] > span {
+.icon[data-hasgone="false"] > span {
   color: #ffbb00;
 }
 
-.icon_complete[data-hasGone="true"] > i {
+.icon_complete[data-hasgone="true"] > i {
   color: #0088ff;
 }
 
-.icon_complete[data-hasGone="false"] > i {
+.icon_complete[data-hasgone="false"] > i {
   color: #ffbb00;
 }
