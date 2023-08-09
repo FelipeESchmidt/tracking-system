@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 
 import { useTrackingInfo } from "@/context/TrackingInfoContext";
 
+import { AppInfo } from "../AppInfo";
 import { TrackingInfo } from "../TrackingInfo";
 import { ContainerSteps } from "./types";
 import styles from "./main_container.module.css";
@@ -15,7 +16,7 @@ export const MainContainer = () => {
   const renderBasedOnStep = () => {
     switch (step) {
       case ContainerSteps.INITIAL:
-        return <></>;
+        return <AppInfo />;
 
       case ContainerSteps.LOADED:
         return <TrackingInfo />;
