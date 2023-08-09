@@ -14,6 +14,7 @@ import { GoogleMapWithChildrenType, IMapComposedProps } from "@/types";
 import { useCitiesTracking } from "@/hooks/useCitiesTracking";
 import { useTrackingInfo } from "@/context/TrackingInfoContext";
 
+import styles from "./map.module.css";
 import {
   defaultCenterCoordinates,
   defaultPolylineProps,
@@ -26,9 +27,9 @@ export const Map: IMapComposedProps = compose(
   withProps(({ mapId }: IMapComposedProps) => ({
     mapId,
     googleMapURL: mapsUrl,
-    loadingElement: <div style={{ height: `100%`, width: "100%" }} />,
-    containerElement: <div style={{ height: `800px`, width: "100%" }} />,
-    mapElement: <div style={{ height: `100%`, width: "100%" }} />,
+    loadingElement: <div className={styles.map_loading} />,
+    containerElement: <div className={styles.map_container} />,
+    mapElement: <div className={styles.map_element} />,
   })),
   withScriptjs,
   withGoogleMap
