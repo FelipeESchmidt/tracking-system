@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Header } from "@/components/Header";
-import { TrackingInfo } from "@/components/TrackingInfo";
+import { MainContainer } from "@/components/MainContainer";
 import { ThemeContextProvider } from "@/context/ThemeContext";
 import { TrackingInfoContextProvider } from "@/context/TrackingInfoContext";
 
@@ -14,7 +14,7 @@ export default function Home() {
       <TrackingInfoContextProvider>
         <ThemeContextProvider>
           <Header />
-          <TrackingInfo />
+          <MainContainer />
         </ThemeContextProvider>
       </TrackingInfoContextProvider>
     </main>
