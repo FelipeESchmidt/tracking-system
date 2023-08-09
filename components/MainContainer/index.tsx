@@ -2,9 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 
+import { useTrackingInfo } from "@/context/TrackingInfoContext";
+
 import { TrackingInfo } from "../TrackingInfo";
 import { ContainerSteps } from "./types";
-import { useTrackingInfo } from "@/context/TrackingInfoContext";
+import styles from "./main_container.module.css";
 
 export const MainContainer = () => {
   const { info } = useTrackingInfo();
@@ -25,5 +27,5 @@ export const MainContainer = () => {
     return setStep(ContainerSteps.LOADED);
   }, [info]);
 
-  return renderBasedOnStep();
+  return <div className={styles.main_container}>{renderBasedOnStep()}</div>;
 };
