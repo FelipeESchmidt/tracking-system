@@ -8,7 +8,11 @@ export const AppInfo = () => {
     <section className={styles.app_info}>
       <div className={styles.container}>
         <div className={styles.intro}>
-          <h2>🌍 Visualize Seu Pacote Em Tempo Real! 📦</h2>
+          <h2>
+            <Icon i="preview" type="outlined" />
+            <span>Visualize Seu Pacote Em Tempo Real!</span>
+            <Icon i="timer" type="outlined" />
+          </h2>
           <p>
             Bem-vindo ao <strong>Tracking System</strong>, a evolução no
             rastreamento de objetos dos correios.
