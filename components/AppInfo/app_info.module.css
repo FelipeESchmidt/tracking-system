@@ -82,3 +82,23 @@
 .how_it_works {
   text-align: right;
 }
+
+@media screen and (max-width: 1024px) {
+  .container {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .particulars {
+    flex-direction: column;
+  }
+
+  .particulars > div {
+    width: 100%;
+  }
+}
