@@ -50,13 +50,13 @@ export const AppInfo = () => {
                 </span>
               </li>
               <li>
-                <Icon i="map" />
+                <Icon i="map" type="outlined" />
                 <span>
                   Visualize no <strong>Mapa</strong>
                 </span>
               </li>
               <li>
-                <Icon i="info" />
+                <Icon i="info" type="outlined" />
                 <span>
                   Confira os <strong>Detalhes</strong>
                 </span>
