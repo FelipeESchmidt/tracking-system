@@ -20,8 +20,13 @@ export interface ITrackingInfoCityWithCoordinatesProps
   coordinates: Coordinates;
 }
 
+export interface ITrackingInfoResponseProps {
+  cities: ITrackingInfoCityWithCoordinatesProps[];
+  events: IEventProps[];
+}
+
 export interface ITrackingInfoStateProps {
-  info: ITrackingInfoCityWithCoordinatesProps[];
+  info: ITrackingInfoResponseProps;
 }
 
 export interface IThemeStateProps {

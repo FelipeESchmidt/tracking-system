@@ -27,10 +27,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const { code } = req.body;
-    const filteredCities = await fetchTrackingInfo(code);
+    const { filteredCities, events } = await fetchTrackingInfo(code);
     const citiesWithCoords = await fetchCoordinatesFromCities(filteredCities);
 
-    res.status(200).json(citiesWithCoords);
+    res.status(200).json({ cities: citiesWithCoords, events });
   } catch (error) {
     res.status(400).json({ error: `${error}` });
   } finally {

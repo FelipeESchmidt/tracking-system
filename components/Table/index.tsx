@@ -14,7 +14,7 @@ export const Table = () => {
   const [isClient, setIsClient] = useState(false);
   const { info } = useTrackingInfo();
 
-  const reversedInfo = info.reverse();
+  const reversedInfo = info.cities.reverse();
 
   const isAirplaneIcon = (
     item: ITrackingInfoCityWithCoordinatesProps,
