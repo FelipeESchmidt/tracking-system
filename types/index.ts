@@ -22,7 +22,7 @@ export interface ITrackingInfoCityWithCoordinatesProps
 
 export interface ITrackingInfoResponseProps {
   cities: ITrackingInfoCityWithCoordinatesProps[];
-  events: IEventProps[];
+  events: IBetteredEventProps[];
 }
 
 export interface ITrackingInfoStateProps {
@@ -56,6 +56,11 @@ export interface IEventProps {
     bairro: string;
     uf: string;
   };
+}
+
+export interface IBetteredEventProps extends IEventProps {
+  description: string;
+  texts: string[];
 }
 
 export interface IPackageProps {
