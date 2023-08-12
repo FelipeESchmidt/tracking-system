@@ -2,41 +2,14 @@
 
 import React, { useEffect, useState } from "react";
 
-import { IBetteredEventProps } from "@/types";
 import { useTrackingInfo } from "@/context/TrackingInfoContext";
 
 import { Icon } from "../Icon";
 import styles from "./table.module.css";
-import { capitalize } from "@/utils";
 
 export const Table = () => {
   const [isClient, setIsClient] = useState(false);
   const { info } = useTrackingInfo();
-
-  const isAirplaneIcon = (
-    item: IBetteredEventProps,
-    nextItem?: IBetteredEventProps
-  ) => {
-    if (item.local === "País") return true;
-
-    return !!nextItem;
-  };
-
-  const getShippingIcon = (item: IBetteredEventProps, index: number) => {
-    const nextIndex = index + 1;
-
-    const isAirplane = isAirplaneIcon(
-      item,
-      info.events[nextIndex] as IBetteredEventProps
-    );
-
-    return isAirplane ? "flight" : "local_shipping";
-  };
-
-  const getCompleteIcon = (item: IBetteredEventProps) => {
-    if (!!item.data) return "check";
-    return "more_time";
-  };
 
   useEffect(() => {
     setIsClient(true);
@@ -47,18 +20,22 @@ export const Table = () => {
   return (
     <div className={styles.table}>
       {info.events.map((item, index) => (
-        <div key={item.cidade} className={styles.table_item}>
-          <span className={styles.index}>#{index}</span>
-          <div className={styles.icon} data-hasgone={!!item.data}>
-            <Icon i={getShippingIcon(item, index)} />
+        <div key={index} className={styles.table_item}>
+          <div className={styles.main_info}>
+            <span className={styles.index}>#{index}</span>
+            <div className={styles.icon} data-hasgone={!!item.data}>
+              <Icon i="local_shipping" />
+            </div>
+            <span className={styles.city}>{item.city}</span>
           </div>
-          <div className={styles.cities}>
-            {item.texts.map((text, index) => (
-              <span key={`text-${index}`}>{text}</span>
-            ))}
-          </div>
-          <div className={styles.icon_complete} data-hasgone={!!item.data}>
-            <Icon i={getCompleteIcon(item)} />
+          <div className={styles.secondary_info}>
+            <div className={styles.texts}>
+              {item.texts.map((text, index) => (
+                <span key={`text-${index}`} className={styles.text}>
+                  {text}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       ))}

@@ -61,6 +61,8 @@ export interface IEventProps {
 export interface IBetteredEventProps extends IEventProps {
   description: string;
   texts: string[];
+  city: string;
+  dateTime: string;
 }
 
 export interface IPackageProps {

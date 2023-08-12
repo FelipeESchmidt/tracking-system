@@ -1,3 +1,5 @@
+import moment from "moment";
+
 import {
   ITrackingInfoCityProps,
   IPackageProps,
@@ -20,7 +22,13 @@ const normalizeEvents = (data: IPackageProps) => {
     return `${event.cidade} ${event.uf ? `- ${event.uf}` : ""}`;
   };
 
-  const normalizedEvents = events.map((event) => {
+  const getDateTime = (event: { data: string; hora: string }) => {
+    const dateTimeSimple = `${event.data} ${event.hora}`;
+    const dateTimeMoment = moment(dateTimeSimple, "DD/MM/YYYY HH:mm");
+    return dateTimeMoment.format();
+  };
+
+  const normalizedEvents: IBetteredEventProps[] = events.map((event) => {
     const texts = [];
 
     if (!!event.destino) {
@@ -37,11 +45,13 @@ const normalizeEvents = (data: IPackageProps) => {
     return {
       ...event,
       description: event.descricao,
+      dateTime: getDateTime(event),
+      city: getCityText(event),
       texts,
     };
   });
 
-  return normalizedEvents as IBetteredEventProps[];
+  return normalizedEvents;
 };
 
 export const normalizeTrackingInfo = (

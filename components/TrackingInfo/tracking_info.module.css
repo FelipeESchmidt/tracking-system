@@ -7,7 +7,7 @@
 
 .table {
   width: 25%;
-  max-height: 800px;
+  max-height: 80vh;
   margin: auto 0;
   overflow-y: auto;
 }

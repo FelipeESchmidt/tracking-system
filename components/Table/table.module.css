@@ -7,13 +7,10 @@
   margin: 0 auto;
 }
 
-.table span {
-  text-transform: capitalize;
-}
-
 .table_item {
   position: relative;
   display: flex;
+  flex-direction: column;
   flex: 1;
   gap: 16px;
   align-items: center;
@@ -22,6 +19,17 @@
   padding: 24px 32px;
   border-radius: 8px;
   box-shadow: 0 0 8px 2px #40404040, inset 0 0 4px #52525252;
+}
+
+.main_info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.secondary_info {
+  width: 100%;
 }
 
 .index {
@@ -38,21 +46,34 @@
   text-align: center;
 }
 
-.cities {
+.city {
+  flex: 1;
+}
+
+.texts {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+}
+
+.text {
+  font-size: 12px;
 }
 
 .icon {
-  width: 42px;
-  height: 42px;
+  width: 24px;
+  height: 24px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   border-radius: 50%;
+}
+
+.icon i {
+  font-size: 14px;
 }
 
 .icon[data-hasgone="true"] {
@@ -68,13 +89,5 @@
 }
 
 .icon[data-hasgone="false"] > span {
-  color: #ffbb00;
-}
-
-.icon_complete[data-hasgone="true"] > i {
-  color: #0088ff;
-}
-
-.icon_complete[data-hasgone="false"] > i {
   color: #ffbb00;
 }
