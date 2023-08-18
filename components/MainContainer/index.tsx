@@ -24,7 +24,7 @@ export const MainContainer = () => {
   };
 
   useEffect(() => {
-    if (!info.length) return setStep(ContainerSteps.INITIAL);
+    if (!info.events.length) return setStep(ContainerSteps.INITIAL);
     return setStep(ContainerSteps.LOADED);
   }, [info]);
 
