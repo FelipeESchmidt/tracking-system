@@ -1,4 +1,4 @@
-import { ITrackingInfoCityWithCoordinatesProps } from "@/types";
+import { ITrackingInfoResponseProps } from "@/types";
 
 export enum Actions {
   SET,
@@ -7,7 +7,7 @@ export enum Actions {
 
 interface ISetAction {
   type: Actions.SET;
-  info: ITrackingInfoCityWithCoordinatesProps[];
+  info: ITrackingInfoResponseProps;
 }
 
 interface IResetAction {

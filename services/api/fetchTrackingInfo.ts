@@ -13,7 +13,5 @@ export const fetchTrackingInfo = async (code: string) => {
     return Promise.reject(trackingInfo.erro);
   }
 
-  const normalizedInfo = normalizeTrackingInfo(trackingInfo as IPackageProps);
-
-  return normalizedInfo;
+  return normalizeTrackingInfo(trackingInfo as IPackageProps);
 };

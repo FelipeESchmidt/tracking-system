@@ -3,9 +3,12 @@
 import React from "react";
 
 import { theme } from "./constants";
+import { useThemeContext, useThemeDispatch } from "@/context/ThemeContext";
+import { Actions } from "@/reducers/themeReducer/actions";
 
 export const useTheme = () => {
-  const [dark, setDark] = React.useState(true);
+  const { dark } = useThemeContext();
+  const { dispatch } = useThemeDispatch();
 
   const handleChangeTheme = (dark: boolean) => {
     const root: HTMLElement | null = document?.querySelector(":root");
@@ -18,7 +21,7 @@ export const useTheme = () => {
   };
 
   const handleChangeMode = () => {
-    setDark((prev) => !prev);
+    dispatch({ type: Actions.SET, dark: !dark });
   };
 
   React.useEffect(() => {

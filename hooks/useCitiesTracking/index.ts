@@ -19,7 +19,7 @@ export const useCitiesTracking = () => {
     const complete = data.filter(({ hasGone }) => hasGone);
     const incomplete = data.filter(({ hasGone }) => !hasGone);
 
-    if (complete.length) incomplete.push(complete[0]);
+    if (complete.length) incomplete.push(complete[complete.length - 1]);
 
     return { complete, incomplete };
   };

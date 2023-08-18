@@ -1,0 +1,16 @@
+.info_wrapper {
+  display: flex;
+  width: 100%;
+  gap: 4%;
+}
+
+.table {
+  width: 25%;
+  max-height: 80vh;
+  margin: auto 0;
+  overflow-y: auto;
+}
+
+.map {
+  flex: 1;
+}

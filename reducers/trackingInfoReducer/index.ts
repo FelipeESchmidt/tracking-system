@@ -1,7 +1,11 @@
+"use client";
+
 import { ITrackingInfoStateProps } from "@/types";
 import { ActionType, Actions } from "./actions";
 
-export const initialState: ITrackingInfoStateProps = { info: [] };
+export const initialState: ITrackingInfoStateProps = {
+  info: { cities: [], events: [] },
+};
 
 export const reducer = (
   state: ITrackingInfoStateProps,

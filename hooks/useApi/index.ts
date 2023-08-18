@@ -1,10 +1,8 @@
 "use client";
 
 import api from "@/services/axios";
-import { ITrackingInfoCityWithCoordinatesProps } from "@/types";
+import { ITrackingInfoResponseProps } from "@/types";
 import { useEffect } from "react";
-
-type ReturnDataProps = ITrackingInfoCityWithCoordinatesProps[];
 
 export const useApi = () => {
   useEffect(() => {
@@ -14,7 +12,7 @@ export const useApi = () => {
   const fetchTrackingInfo = async (code: string) => {
     return api
       .post("/fetch-info", { code })
-      .then(({ data }: { data: ReturnDataProps }) => data);
+      .then(({ data }: { data: ITrackingInfoResponseProps }) => data);
   };
 
   return { fetchTrackingInfo };
