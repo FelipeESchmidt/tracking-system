@@ -1,0 +1,104 @@
+.app_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 85vh;
+}
+
+.app_info h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.app_info h3 {
+  margin-bottom: 12px;
+}
+
+.app_info i {
+  padding: 4px;
+  border: 1px solid #404040;
+  box-shadow: 0 0 2px 0 #40404040, inset 0 4px 2px #40404040;
+  border-radius: 50%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 60%;
+  gap: 32px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 16px;
+  box-shadow: 0 0 4px 2px #40404040;
+  padding: 32px;
+  text-align: center;
+}
+
+.particulars {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.particulars > div {
+  width: 50%;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 0 4px 2px #40404040;
+}
+
+.features ul,
+.how_it_works ol {
+  list-style-type: none;
+  padding: 0;
+}
+
+.features ul li,
+.how_it_works ol li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.how_it_works ol li {
+  flex-direction: row-reverse;
+}
+
+.features {
+  text-align: left;
+}
+
+.how_it_works {
+  text-align: right;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .particulars {
+    flex-direction: column;
+  }
+
+  .particulars > div {
+    width: 100%;
+  }
+}
