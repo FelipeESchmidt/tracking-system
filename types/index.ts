@@ -20,8 +20,13 @@ export interface ITrackingInfoCityWithCoordinatesProps
   coordinates: Coordinates;
 }
 
+export interface ITrackingInfoResponseProps {
+  cities: ITrackingInfoCityWithCoordinatesProps[];
+  events: IBetteredEventProps[];
+}
+
 export interface ITrackingInfoStateProps {
-  info: ITrackingInfoCityWithCoordinatesProps[];
+  info: ITrackingInfoResponseProps;
 }
 
 export interface IThemeStateProps {
@@ -51,6 +56,13 @@ export interface IEventProps {
     bairro: string;
     uf: string;
   };
+}
+
+export interface IBetteredEventProps extends IEventProps {
+  description: string;
+  texts: string[];
+  city: string;
+  dateTime: string;
 }
 
 export interface IPackageProps {

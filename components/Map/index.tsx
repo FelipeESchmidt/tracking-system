@@ -37,7 +37,7 @@ export const Map: IMapComposedProps = compose(
   const { info } = useTrackingInfo();
   const { createRoutes } = useCitiesTracking();
 
-  const { complete, incomplete } = createRoutes(info);
+  const { complete, incomplete } = createRoutes(info.cities);
 
   const hasIncomplete = incomplete.length;
 

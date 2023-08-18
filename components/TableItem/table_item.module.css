@@ -1,0 +1,122 @@
+.table_item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 24px 32px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px 2px #40404040, inset 0 0 4px #52525252;
+}
+
+.table_item[data-open="false"] {
+  gap: 0;
+}
+
+.main_info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.secondary_info {
+  width: 100%;
+}
+
+.index {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  padding: 4px;
+
+  font-size: 12px;
+
+  background-color: #52525252;
+  border-radius: 8px 0 8px 0;
+  text-align: center;
+}
+
+.city {
+  flex: 1;
+}
+
+.texts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.text {
+  font-size: 12px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+}
+
+.icon i {
+  font-size: 14px;
+}
+
+.icon[data-hasgone="true"] {
+  border: 2px solid #0088ff;
+}
+
+.icon[data-hasgone="true"] > span {
+  color: #0088ff;
+}
+
+.icon[data-hasgone="false"] {
+  border: 2px solid #ffbb00;
+}
+
+.icon[data-hasgone="false"] > span {
+  color: #ffbb00;
+}
+
+.chevron {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-radius: 50%;
+  transition: transform 0.5s;
+}
+
+.chevron i {
+  transition: color 0.25s;
+}
+
+.chevron[data-open="true"] {
+  transform: rotate(180deg);
+}
+
+.chevron:hover i {
+  color: rgb(var(--switch-icon-color-active));
+}
+
+.secondary_info * {
+  transition: font-size 0.5s, line-height 0.5s, padding 0.5s, margin 0.5s,
+    gap 0.5s, opacity 0.2s;
+}
+
+.secondary_info[data-open="false"] * {
+  opacity: 0.1;
+  font-size: 0;
+  line-height: 0;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+}
